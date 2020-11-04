@@ -43,10 +43,15 @@
          * Devuelve todo el dinero
          */
         public int vaciarDineroDeLaMaquina() {
-            int vaciarDineroDeLaMaquina = balanceClienteActual + totalDineroAcumulado;
-            balanceClienteActual = 0;
-            totalDineroAcumulado = 0;
-            return vaciarDineroDeLaMaquina;
+            int dineroTotal = totalDineroAcumulado;   
+            if (balanceClienteActual != 0) {
+                System.out.println(" no se pude vaciar la maquina hay una operacion en curso");
+                dineroTotal = -1; 
+            }
+            else {
+                totalDineroAcumulado = 0;
+            }
+            return dineroTotal; 
         }
         
         /**
