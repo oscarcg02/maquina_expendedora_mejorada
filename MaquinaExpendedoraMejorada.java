@@ -38,7 +38,17 @@
         public int getBalanceClienteActual() {
             return balanceClienteActual;
         }
-    
+        
+        /**
+         * Devuelve todo el dinero
+         */
+        public int vaciarDineroDeLaMaquina() {
+            int vaciarDineroDeLaMaquina = balanceClienteActual + totalDineroAcumulado;
+            balanceClienteActual = 0;
+            totalDineroAcumulado = 0;
+            return vaciarDineroDeLaMaquina;
+        }
+        
         /**
          * Simula la introduccion de dinero por parte del cliente actual
          */
