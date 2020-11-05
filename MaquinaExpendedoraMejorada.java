@@ -10,6 +10,8 @@
         private String estacionOrigen;
         // El destino del billete
         private String estacionDestino;
+        //numero de billetes impresos
+        private int numeroBilletesVendidos;
         
     
         /**
@@ -23,6 +25,7 @@
             totalDineroAcumulado = 0;
             estacionOrigen = origen;
             estacionDestino = destino;
+            numeroBilletesVendidos = 0;
         }
     
         /**
@@ -87,6 +90,7 @@
                 totalDineroAcumulado = totalDineroAcumulado + precioBillete;
                 // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
                 balanceClienteActual = balanceClienteActual - precioBillete;
+                numeroBilletesVendidos = numeroBilletesVendidos + 1;
             }
             else {
                 System.out.println("Necesitas introducir " + (cantidadDeDineroQueFalta) + " euros mas!");
@@ -104,4 +108,19 @@
             balanceClienteActual = 0;
             return cantidadDeDineroADevolver;
         } 
+        
+        /**
+         * Numero de billetes impresos
+         */
+        public int getNumeroBilletesVendidos() {
+            return numeroBilletesVendidos;
+        } 
+        
+        /**
+         * Imprime nº de billetes
+         */
+        public void imprimeNumeroBilletesVendidos() {
+            //simula la impresion de el numero de billetes ya impresos
+            System.out.println("# Nº de billetes vendidos " + numeroBilletesVendidos);
+        }
 }
