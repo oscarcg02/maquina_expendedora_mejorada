@@ -10,8 +10,11 @@
         private String estacionOrigen;
         // El destino del billete
         private String estacionDestino;
-        //numero de billetes impresos
+        //Numero de billetes impresos
         private int numeroBilletesVendidos;
+        //Descuento billete
+        private boolean descuentoBillete;
+        
         
     
         /**
@@ -19,15 +22,16 @@
          * precio del billete y el origen y destino dados. Se asume que el precio
          * del billete que se recibe es mayor que 0.
          */
-        public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino) {
+        public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean premio) {
             precioBillete = precioDelBillete;
             balanceClienteActual = 0;
             totalDineroAcumulado = 0;
             estacionOrigen = origen;
             estacionDestino = destino;
             numeroBilletesVendidos = 0;
+            descuentoBillete = premio;
         }
-    
+        
         /**
          * Devuelve el precio del billete
          */
@@ -75,6 +79,7 @@
         public void imprimirBillete() {
             int cantidadDeDineroQueFalta;
             cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
+            double descuento = 0.10;
             if (cantidadDeDineroQueFalta <= 0) {        
                 // Simula la impresion de un billete
                 System.out.println("##################");
@@ -91,7 +96,14 @@
                 // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
                 balanceClienteActual = balanceClienteActual - precioBillete;
                 numeroBilletesVendidos = numeroBilletesVendidos + 1;
+                if (descuentoBillete == true) {
+                    descuento = precioBillete * 0.10;
+                    System.out.println("Eres el ganador de un descuento del 10% en la tienda que usted quiera " + descuento + " euros.");
+                }
+                
             }
+                
+            
             else {
                 System.out.println("Necesitas introducir " + (cantidadDeDineroQueFalta) + " euros mas!");
                         
@@ -123,4 +135,6 @@
             //simula la impresion de el numero de billetes ya impresos
             System.out.println("# Nº de billetes vendidos " + numeroBilletesVendidos);
         }
+        
+                  
 }
