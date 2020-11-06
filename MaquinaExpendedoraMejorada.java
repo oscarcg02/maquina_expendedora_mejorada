@@ -17,7 +17,6 @@ public class MaquinaExpendedoraMejorada {
     //Nº maximo de billetes que se pueden vender 
     private int maximoBilletes;
 
-    
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
@@ -67,17 +66,19 @@ public class MaquinaExpendedoraMejorada {
      * Simula la introduccion de dinero por parte del cliente actual
      */
     public void introducirDinero(int cantidadIntroducida) {
-        if (cantidadIntroducida > 0) {
-            balanceClienteActual = balanceClienteActual + cantidadIntroducida;
-
-            if (numeroBilletesVendidos >= maximoBilletes) {
-                System.out.println("no se pueden introducir mas dinero");
-            }
-
-        }         
+        if (numeroBilletesVendidos >= maximoBilletes) {
+            System.out.println("no se pueden introducir mas dinero");
+        }
         else {
-            System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
-        }        
+            if (cantidadIntroducida > 0) {
+                balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+
+
+            }         
+            else {
+                System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
+            }   
+        }
     }
 
     /**
@@ -101,7 +102,6 @@ public class MaquinaExpendedoraMejorada {
                 System.out.println("##################");
                 System.out.println(); 
 
-                
                 // Actualiza el total de dinero acumulado en la maquina
                 totalDineroAcumulado = totalDineroAcumulado + precioBillete;
                 // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
@@ -114,7 +114,6 @@ public class MaquinaExpendedoraMejorada {
 
             }
 
-                
                 
             else {
                 System.out.println("Necesitas introducir " + (cantidadDeDineroQueFalta) + " euros mas!");
